@@ -46,11 +46,10 @@ func main() {
 			fmt.Println(err)
 		}
 
-		// TODO -- get value from DB
 	} else if len(os.Args) == 3 {
+		// arg1 is key, arg2 is value, so insert kvp
 		key := os.Args[1]
 		value := os.Args[2]
-		// arg1 is key, arg2 is value, so insert kvp
 		err := db.Update(func(tx *bolt.Tx) error {
 			b := tx.Bucket(bucketName)
 			err := b.Put([]byte(key), []byte(value))
